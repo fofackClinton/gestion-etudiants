@@ -1,22 +1,25 @@
 package com.example.universiter.service;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.universiter.entities.Classe;
 
 import com.example.universiter.repository.ClasseRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class ClasseService {
     private ClasseRepository classeRepository;
 
-    public ClasseService(ClasseRepository classeRepository) {
-        this.classeRepository = classeRepository;
-    }
 
-        public Iterable<Classe> lister()
+        public List<Classe> lister()
         {
             return this.classeRepository.findAll();
         } 
@@ -28,16 +31,17 @@ public class ClasseService {
 
     public Classe Lire(int id){
         Optional <Classe> classe = this.classeRepository.findById(id);
-        if (classe.isPresent()) {
-            return classe.get();
-        }
-        return null;
+        return classe.orElseThrow(
+                () -> new EntityNotFoundException("La classe n'existe pas")
+        );
     }
     public void modifier(int id, Classe classe){
         Classe classedb = this.Lire(id);
-        if (classedb.getIdclasse() == classe.getIdclasse()) {
-            this.classeRepository.save(classedb);  
-        }
+        if (Objects.equals(classedb.getIdclasse(), classe.getIdclasse())) {
+            classedb.setCodeClasse(classe.getCodeClasse());
+            classedb.setNomClasse(classe.getNomClasse());
+            this.classeRepository.save(classedb);
+        }else throw new EntityNotFoundException("La classe n'existe pas");
 
     }
     public Iterable<Classe> rechercher(){
