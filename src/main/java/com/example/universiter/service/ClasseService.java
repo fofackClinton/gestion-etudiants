@@ -8,13 +8,13 @@ import com.example.universiter.entities.Classe;
 
 import com.example.universiter.repository.ClasseRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class ClasseService {
     private ClasseRepository classeRepository;
 
-    public ClasseService(ClasseRepository classeRepository) {
-        this.classeRepository = classeRepository;
-    }
 
         public Iterable<Classe> lister()
         {

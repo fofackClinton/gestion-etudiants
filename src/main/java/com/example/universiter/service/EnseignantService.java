@@ -8,16 +8,14 @@ import org.springframework.stereotype.Service;
 import com.example.universiter.entities.Enseignant;
 import com.example.universiter.repository.EnseignantRepository;
 
+import lombok.AllArgsConstructor;
 
 
+@AllArgsConstructor
 @Service
 public class EnseignantService {
     private EnseignantRepository enseignantRepository;
 
-
-        public EnseignantService(EnseignantRepository enseignantRepository) {
-        this.enseignantRepository = enseignantRepository;
-    }
         public void Crerr( Enseignant  enseignant)
         {
             Enseignant enseignantDb = this.enseignantRepository.findByEmail( enseignant.getEmail());

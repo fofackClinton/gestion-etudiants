@@ -8,14 +8,12 @@ import com.example.universiter.entities.Filiere;
 
 import com.example.universiter.repository.FiliereRepository;
 
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 @Service
 public class FiliereService {
     private FiliereRepository filiereRepository;
-
-    public FiliereService(FiliereRepository filiereRepository) {
-        this.filiereRepository = filiereRepository;
-    }
 
         public Iterable<Filiere> lister()
         {

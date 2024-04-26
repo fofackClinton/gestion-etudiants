@@ -3,6 +3,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.universiter.entities.Enseignant;
 import com.example.universiter.service.EnseignantService;
+
+import lombok.AllArgsConstructor;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import java.util.List;
@@ -19,16 +22,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 
-
+@AllArgsConstructor
 @RestController
 @RequestMapping(path = "enseignant")
 public class EnseignantController {
     
     private EnseignantService enseignantService;
 
-    public EnseignantController(EnseignantService enseignantService) {
-        this.enseignantService = enseignantService;
-    }
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public List <Enseignant> listeEtud()
     {

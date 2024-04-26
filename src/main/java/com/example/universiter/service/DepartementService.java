@@ -8,14 +8,11 @@ import com.example.universiter.entities.Departement;
 
 import com.example.universiter.repository.DepartementRepository;
 
+import lombok.AllArgsConstructor;
+@AllArgsConstructor
 @Service
 public class DepartementService {
     private DepartementRepository departementRepository;
-
-    public DepartementService(DepartementRepository departementRepository) {
-        this.departementRepository = departementRepository;
-    }
-
 
         public Iterable<Departement> lister()
         {

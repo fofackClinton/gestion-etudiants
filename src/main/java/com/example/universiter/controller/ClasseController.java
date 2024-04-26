@@ -5,6 +5,8 @@ import com.example.universiter.entities.Classe;
 
 import com.example.universiter.service.ClasseService;
 
+import lombok.AllArgsConstructor;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 
@@ -19,14 +21,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping(path = "classe")
 public class ClasseController {
     private ClasseService classeService;
 
-    public ClasseController(ClasseService classeService) {
-        this.classeService = classeService;
-    }
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public Iterable <Classe> listeEtud()
     {

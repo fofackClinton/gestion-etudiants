@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import com.example.universiter.entities.Etudiant;
 import com.example.universiter.repository.EtudiantRepository;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 @Service
 public class EtudiantService {
     private EtudiantRepository etudiantRepository;
 
-    public EtudiantService(EtudiantRepository etudiantRepository) {
-        this.etudiantRepository = etudiantRepository;
-    }
 
         public void Crerr(Etudiant etudiant)
         {

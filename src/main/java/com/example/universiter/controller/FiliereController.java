@@ -16,15 +16,14 @@ import com.example.universiter.entities.Filiere;
 
 import com.example.universiter.service.FiliereService;
 
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping(path = "filiere")
 public class FiliereController {
     private FiliereService filiereService;
 
-    public FiliereController(FiliereService filiereService) {
-        this.filiereService = filiereService;
-    }
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public Iterable <Filiere> listeEtud()
     {
