@@ -18,10 +18,10 @@ public class ApplicationControllerAdvice {
         return new ErrorEntity(null, e.getMessage());
     }
 //exemple de la gestion d'une erreue de conflic
-    @ResponseStatus(CONFLICT)
-    @ExceptionHandler({EntityNotFoundException.class})
-    public @ResponseBody ErrorEntity handleRuntimeException(EntityNotFoundException e) {
-        return new ErrorEntity(null, e.getMessage());
-    }
+   // @ResponseStatus(CONFLICT)
+    //@ExceptionHandler({EntityNotFoundException.class})
+    //public @ResponseBody ErrorEntity handleRuntimeException(EntityNotFoundException e) {
+      //  return new ErrorEntity(null, e.getMessage());
+    //}
 
 }

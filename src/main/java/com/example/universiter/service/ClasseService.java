@@ -3,7 +3,10 @@ package com.example.universiter.service;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Stream;
 
+import com.example.universiter.Dto.ClasseDto;
+import com.example.universiter.mapper.ClasseDtoMapper;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -16,17 +19,14 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class ClasseService {
+    private ClasseDtoMapper classeDtoMapper;
     private ClasseRepository classeRepository;
 
 
-        public List<Classe> lister()
-        {
-            return this.classeRepository.findAll();
-        } 
-        public void creer(Classe classe){
-       
-            this.classeRepository.save(classe);
-        }
+    public Stream<ClasseDto> lister()
+        {return this.classeRepository.findAll().stream().map(classeDtoMapper);}
+
+    public void creer(Classe classe){this.classeRepository.save(classe);}
 
 
     public Classe Lire(int id){

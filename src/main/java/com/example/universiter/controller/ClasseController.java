@@ -1,4 +1,5 @@
 package com.example.universiter.controller;
+import com.example.universiter.Dto.ClasseDto;
 import org.springframework.http.HttpStatus;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -19,6 +20,7 @@ import com.example.universiter.service.ClasseService;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @AllArgsConstructor
 @CrossOrigin(origins = " http://localhost:4200 ")
@@ -26,11 +28,8 @@ import java.util.List;
 public class ClasseController {
     private ClasseService classeService;
 
-    @GetMapping(path = "classe")
-    public ResponseEntity<List<Classe>> getAll(){
-        List<Classe> classeList = classeService.lister();
-        return new ResponseEntity<>(classeList, HttpStatus.OK);
-    }
+    @GetMapping(path = "classe", produces = APPLICATION_JSON_VALUE)
+        public Stream<ClasseDto> getAll() {return this.classeService.lister();}
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "classe", consumes = APPLICATION_JSON_VALUE)
