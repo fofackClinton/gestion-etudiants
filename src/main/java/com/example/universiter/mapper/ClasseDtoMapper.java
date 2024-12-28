@@ -10,6 +10,6 @@ import java.util.function.Function;
 public class ClasseDtoMapper implements Function<Classe, ClasseDto> {
     @Override
     public ClasseDto apply(Classe classe) {
-        return new ClasseDto(classe.getIdclasse(), classe.getNomClasse(), classe.getCodeClasse());
+        return new ClasseDto(classe.getIdclasse(), classe.getNomClasse(), classe.getCodeClasse(), classe.getFiliere());
     }
 }

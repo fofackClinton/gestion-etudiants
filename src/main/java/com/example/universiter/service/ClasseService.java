@@ -40,6 +40,7 @@ public class ClasseService {
         if (Objects.equals(classedb.getIdclasse(), classe.getIdclasse())) {
             classedb.setCodeClasse(classe.getCodeClasse());
             classedb.setNomClasse(classe.getNomClasse());
+            classedb.setFiliere(classe.getFiliere());
             this.classeRepository.save(classedb);
         }else throw new EntityNotFoundException("La classe n'existe pas");
 
